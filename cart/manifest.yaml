@@ -62,7 +62,7 @@ spec:
           periodSeconds: 10
         envFrom:
         - configMapRef:
-            name: cart-cm
+            name: cart
 ---
 apiVersion: v1
 kind: Service
