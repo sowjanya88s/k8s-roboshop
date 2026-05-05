@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: mongo-rs
   namespace: roboshop
@@ -29,7 +29,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: mongodb-Service
+ name: mongodb-service
+ namespace: roboshop
 spec:
   selector:
     project: roboshop
