@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: catalogue-cm
+  name: catalogue
   namespace: roboshop
   labels:
   # property-like keys; each key maps to a simple value
@@ -15,7 +15,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalogue-rs
+  name: catalogue
   namespace: roboshop
   labels:
     project: roboshop
@@ -66,7 +66,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: catalogue-service
+ name: catalogue
  namespace: roboshop
  labels:
    project: roboshop

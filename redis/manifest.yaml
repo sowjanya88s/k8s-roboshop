@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-rs
+  name: redis
   namespace: roboshop
   labels:
     project: roboshop
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: redis-service
+ name: redis
  namespace: roboshop
 spec:
   selector:
