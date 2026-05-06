@@ -58,7 +58,7 @@ spec:
             path: /health
             port: 8080
           periodSeconds: 10
-          failureThreshold: 2
+          failureThreshold: 20
         livenessProbe:
           httpGet:
            path: /health
