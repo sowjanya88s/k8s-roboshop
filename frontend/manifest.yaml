@@ -1,27 +1,12 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: user
-  namespace: roboshop
-  labels:
-  # property-like keys; each key maps to a simple value
-    project: roboshop
-    env: dev
-    component: user
-data: 
-  MONGO: "true"
-  REDIS_URL: "redis://redis:6379"
-  MONGO_URL: "mongodb://mongodb:27017/users"
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: frontend
   namespace: roboshop
   labels:
     project: roboshop
     env: dev
-    component: user
+    component: frontend
 spec:
   # modify replicas according to your case
   replicas: 1
@@ -29,25 +14,25 @@ spec:
     matchLabels:
       project: roboshop
       env: dev
-      component: user
+      component: frontend
   template:
     metadata:
       labels:
         project: roboshop
         env: dev
-        component: user
+        component: frontend
     spec:
       containers:
-      - name: user
-        image: jujjurisowjanya/user:1.4.0
+      - name: frontend
+        image: jujjurisowjanya/frontend:1.4.0
         imagePullPolicy: Always
         resources:
           requests:
-           memory: "128Mi"
+           memory: "125Mi"
            cpu: "100m"
           limits:
-           memory: "128Mi"
-           cpu: "100m"
+           memory: "256Mi"
+           cpu: "200m"
         readinessProbe:
           tcpSocket:
             port: 8080
@@ -60,24 +45,22 @@ spec:
            port: 8080
           failureThreshold: 2
           periodSeconds: 10
-        envFrom:
-        - configMapRef:
-            name: user
 ---
 apiVersion: v1
 kind: Service
 metadata:
- name: user
+ name: frontend
  namespace: roboshop
  labels:
    project: roboshop
    env: dev
-   component: user
+   component: frontend
 spec:
+  type: LoadBalancer
   selector:
     project: roboshop
     env: dev
-    component: user
+    component: frontend
   ports:
   - protocol: TCP
     port: 8080
