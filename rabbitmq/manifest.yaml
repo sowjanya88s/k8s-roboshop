@@ -47,6 +47,10 @@ kind: Service
 metadata:
  name: rabbitmq
  namespace: roboshop
+ labels:
+    project: roboshop
+    env: dev
+    component: rabbitmq
 spec:
   selector:
     project: roboshop
