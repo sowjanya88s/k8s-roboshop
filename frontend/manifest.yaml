@@ -35,14 +35,14 @@ spec:
            cpu: "200m"
         readinessProbe:
           tcpSocket:
-            port: 8080
+            port: 80
           periodSeconds: 10
           failureThreshold: 2
           initialDelaySeconds: 15
         livenessProbe:
           httpGet:
-           path: /health
-           port: 8080
+           path: /
+           port: 80
           failureThreshold: 2
           periodSeconds: 10
 ---
