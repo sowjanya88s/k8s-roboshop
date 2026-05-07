@@ -98,7 +98,7 @@ spec:
         component: frontend
       spec:
         volumes:
-        - name: nginx.conf
+        - name: nginx-config
           configMap:
             name: frontend
     spec:
@@ -126,7 +126,7 @@ spec:
           failureThreshold: 2
           periodSeconds: 10
         volumeMounts:
-        - name: nginx.conf
+        - name: nginx-config
           mountPath: "/etc/nginx/nginx.conf"
           subPath: nginx.conf
           readOnly: true
