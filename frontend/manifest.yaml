@@ -96,20 +96,19 @@ spec:
         project: roboshop
         env: dev
         component: frontend
-      spec:
+    spec:
         volumes:
         - name: nginx-config
           configMap:
             name: frontend
-    spec:
-      containers:
-      - name: frontend
-        image: jujjurisowjanya/frontend:1.5.0
-        imagePullPolicy: Always
-        resources:
-          requests:
-           memory: "125Mi"
-           cpu: "100m"
+        containers:
+        - name: frontend
+          image: jujjurisowjanya/frontend:1.5.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+            memory: "125Mi"
+            cpu: "100m"
           limits:
            memory: "256Mi"
            cpu: "200m"
