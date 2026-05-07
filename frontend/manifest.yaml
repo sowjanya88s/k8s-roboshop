@@ -107,28 +107,28 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-            memory: "125Mi"
-            cpu: "100m"
-          limits:
-           memory: "256Mi"
-           cpu: "200m"
-        readinessProbe:
-          tcpSocket:
+             memory: "125Mi"
+             cpu: "100m"
+            limits:
+             memory: "256Mi"
+             cpu: "200m"
+          readinessProbe:
+           tcpSocket:
             port: 80
-          periodSeconds: 10
-          failureThreshold: 2
-          initialDelaySeconds: 15
-        livenessProbe:
-          httpGet:
-           path: /
-           port: 80
-          failureThreshold: 2
-          periodSeconds: 10
-        volumeMounts:
-        - name: nginx-config
-          mountPath: "/etc/nginx/nginx.conf"
-          subPath: nginx.conf
-          readOnly: true
+           periodSeconds: 10
+           failureThreshold: 2
+           initialDelaySeconds: 15
+          livenessProbe:
+           httpGet:
+            path: /
+            port: 80
+           failureThreshold: 2
+           periodSeconds: 10
+          volumeMounts:
+          - name: nginx-config
+            mountPath: "/etc/nginx/nginx.conf"
+            subPath: nginx.conf
+            readOnly: true
 ---
 apiVersion: v1
 kind: Service
